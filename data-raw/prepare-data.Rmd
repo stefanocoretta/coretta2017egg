@@ -1,0 +1,31 @@
+---
+title: "Prepare data"
+author: "Stefano Coretta"
+date: "29/04/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+library(tidyverse)
+```
+
+# Datasets
+
+```{r tracegram}
+tracegram_p <- read_csv("./data-raw/tracegram.csv") %>%
+  separate(file, c("speaker", "phonation"))
+```
+
+```{r wavegram}
+wavegram_p <- read_csv("./data-raw/wavegram.csv") %>%
+  separate(file, c("speaker", "phonation"))
+```
+
+# Save data
+
+```{r use}
+usethis::use_data(tracegram_p, wavegram_p, overwrite = TRUE)
+```
+
