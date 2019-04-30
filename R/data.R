@@ -29,5 +29,6 @@
 #'  \item{\code{sequence}}{index of glottal cycle within utterance}
 #'  \item{\code{sample}}{sample within glottal cycle}
 #'  \item{\code{amplitude}}{relative amplitude of the electroglottographic signal}
+#'  \item{\code{sample_prop}}{normalised time of glottal cycle onset}
 #' }
 "wavegram_p"

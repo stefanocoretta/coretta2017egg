@@ -20,7 +20,10 @@ tracegram_p <- read_csv("./data-raw/tracegram.csv") %>%
 
 ```{r wavegram}
 wavegram_p <- read_csv("./data-raw/wavegram.csv") %>%
-  separate(file, c("speaker", "phonation"))
+  separate(file, c("speaker", "phonation")) %>%
+  mutate(
+    sequence_prop = sequence / max(sequence)
+  )
 ```
 
 # Save data
