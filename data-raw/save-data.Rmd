@@ -18,12 +18,12 @@ library(tidyverse)
 # Datasets
 
 ```{r tracegram}
-tracegram_p <- read_csv("./data-raw/tracegram.csv") %>%
+tracegram_p <- read_csv("./data-raw/datasets/tracegram.csv") %>%
   separate(file, c("speaker", "phonation"))
 ```
 
 ```{r wavegram}
-wavegram_p <- read_csv("./data-raw/wavegram.csv") %>%
+wavegram_p <- read_csv("./data-raw/datasets/wavegram.csv") %>%
   separate(file, c("speaker", "phonation")) %>%
   mutate(
     sequence_prop = sequence / max(sequence)

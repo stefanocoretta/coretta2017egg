@@ -463,7 +463,7 @@ $(document).ready(function () {
 
 <div id="datasets" class="section level1">
 <h1><span class="header-section-number">1</span> Datasets</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">tracegram_p &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data-raw/tracegram.csv&quot;</span>) <span class="op">%&gt;%</span></a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">tracegram_p &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data-raw/datasets/tracegram.csv&quot;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="st">  </span><span class="kw">separate</span>(file, <span class="kw">c</span>(<span class="st">&quot;speaker&quot;</span>, <span class="st">&quot;phonation&quot;</span>))</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -474,7 +474,7 @@ $(document).ready(function () {
 ##   degg_maximum = col_double(),
 ##   degg_minimum = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">wavegram_p &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data-raw/wavegram.csv&quot;</span>) <span class="op">%&gt;%</span></a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">wavegram_p &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data-raw/datasets/wavegram.csv&quot;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw">separate</span>(file, <span class="kw">c</span>(<span class="st">&quot;speaker&quot;</span>, <span class="st">&quot;phonation&quot;</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(</a>
 <a class="sourceLine" id="cb3-4" title="4">    <span class="dt">sequence_prop =</span> sequence <span class="op">/</span><span class="st"> </span><span class="kw">max</span>(sequence)</a>
