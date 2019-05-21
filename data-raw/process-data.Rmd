@@ -1,0 +1,41 @@
+---
+title: "Process EGG data"
+author: "Stefano Coretta"
+date: "16/05/2019"
+output: 
+  html_document: 
+    highlight: tango
+    number_sections: yes
+    theme: paper
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+knitr::opts_knit$set(root.dir = here::here())
+library(tidyverse)
+library(speakr)
+```
+
+# Tangle and wave code
+
+The following chunk tangles the code from the source `process-egg.praat.md`.
+
+```{r tangle}
+lmt("./data-raw/code/process-egg.praat.md")
+```
+
+The documention is weaved to a PDF file.
+
+```{r weave}
+system("pandoc -f gfm -o ./data-raw/code/process-egg.pdf ./data-raw/code/process-egg.praat.md -N --syntax-definition=/Users/stefano/.pandoc/pandoc-praat/praat.xml --highlight-style=/Users/stefano/.pandoc/flamenco.theme --metadata-file=./data-raw/code/process-egg.yaml")
+```
+
+# Run scripts
+
+The output of the following scripts is saved in `data-raw/datasets/`.
+
+```{r run}
+praat_run("./data-raw/code/tracegram.praat")
+praat_run("./data-raw/code/wavegram.praat")
+```
+
