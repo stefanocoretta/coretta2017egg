@@ -1,8 +1,8 @@
 Package: coretta2017egg
 Type: Package
 Title: Provides two datasets from a pilot study on EGG data analysis
-Version: 0.0.0.9000
-Date: 2019-04-29
+Version: 0.0.0.9001
+Date: 2019-05-21
 Authors@R: 
     person(given = "Stefano",
            family = "Coretta",
