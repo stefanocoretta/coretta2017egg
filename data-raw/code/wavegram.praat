@@ -24,12 +24,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 ######################################
+#
+# !!! WARNING !!!
+#
+# This script is generated automatically, DO NOT EDIT
+#
+######################################
 
 #### Preamble w ####
 lower = 40
 upper = 10000
 smoothWidth = 11
-results$ = "../data/datasets"
+results$ = "../datasets"
 createDirectory(results$)
 data$ = "../data/raw"
 resultsHeader$ = "file,token,time,sequence,sample,amplitude"

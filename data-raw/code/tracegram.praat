@@ -24,12 +24,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 ######################################
+#
+# !!! WARNING !!!
+#
+# This script is generated automatically, DO NOT EDIT
+#
+######################################
 
 #### Preamble t ####
 lower = 40
 upper = 10000
 smoothWidth = 11
-results$ = "../data/datasets"
+results$ = "../datasets"
 createDirectory(results$)
 data$ = "../data/raw"
 resultsHeader$ = "file,token,time,egg_minimum,degg_maximum,degg_minimum"
@@ -47,6 +53,8 @@ for file to numberOfFiles
   sound2 = Extract one channel: 2
   Multiply: -1
   Filter (pass Hann band): 100, 0, 100
+
+  # Detect VUV
   pointProcess = noprogress To PointProcess (periodic, peaks): 75, 600, "no", "yes"
   textGrid = To TextGrid (vuv): 0.02, 0.001
   numberOfIntervals = Get number of intervals: 1

@@ -19,7 +19,7 @@ The preamble defines a few settings for filtering and smoothing, and the results
 lower = 40
 upper = 10000
 smoothWidth = 11
-results$ = "../data/datasets"
+results$ = "../datasets"
 createDirectory(results$)
 data$ = "../data/raw"
 resultsHeader$ = "file,token,time,sequence,sample,amplitude"
@@ -30,7 +30,7 @@ numberOfFiles = Get number of strings
 ```
 
 Each file is read and the voiced/unvoiced intervals in the EGG channel are detected with `To TextGrid (vuv)`.
-The signal is pass-band filtered before detection to remove hardware high-frequency noise.
+The signal is high-pass filtered (100 Hz) before detection to remove hardware high-frequency noise.
 
 ```praat "main loop w"
 #### Main loop w ####
@@ -83,7 +83,7 @@ endfor
 ```
 
 The following chunk defines the dEGG calculation procedure.
-Before calculating the dEGG, the EGG signal is smoothed with a moving average function with smooth width 11 (time lags are adjusted by shifting the raw time by the lag).
+Before calculating the dEGG, the EGG signal is band-pass filtered (40--10k Hz) and then smoothed with a moving average function with smooth width 11 (time lags are adjusted by shifting the raw time by the lag).
 A PointProcess object is created, which will be used for the detection of the start of the glottal cycles.
 The calculated dEGG is smoothed again with the same moving average and time lag fix.
 The peaks in the dEGG signal are detected with `To point process (periodic, peaks)`.
@@ -199,7 +199,7 @@ The preamble sets a few variables for reading the files.
 lower = 40
 upper = 10000
 smoothWidth = 11
-results$ = "../data/datasets"
+results$ = "../datasets"
 createDirectory(results$)
 data$ = "../data/raw"
 resultsHeader$ = "file,token,time,egg_minimum,degg_maximum,degg_minimum"
@@ -210,7 +210,7 @@ numberOfFiles = Get number of strings
 ```
 
 Each file is read and the voiced/unvoiced intervals in the EGG channel are detected with `To TextGrid (vuv)`.
-The signal is pass-band filtered before detection to remove hardware high-frequency noise.
+The signal is high-pass filtered (100 Hz) before detection to remove hardware low-frequency noise.
 
 ```praat "main loop t"
 #### Main loop t ####
@@ -222,6 +222,8 @@ for file to numberOfFiles
   sound2 = Extract one channel: 2
   Multiply: -1
   Filter (pass Hann band): 100, 0, 100
+
+  # Detect VUV
   pointProcess = noprogress To PointProcess (periodic, peaks): 75, 600, "no", "yes"
   textGrid = To TextGrid (vuv): 0.02, 0.001
   numberOfIntervals = Get number of intervals: 1
@@ -262,7 +264,7 @@ endfor
 ```
 
 The following chunk defines the dEGG calculation procedure.
-Before calculating the dEGG, the EGG signal is smoothed with a moving average function with smooth width 11 (time lags are adjusted by shifting the raw time by the lag).
+Before calculating the dEGG, the EGG signal is band-pass filtered (40--10k Hz) and then smoothed with a moving average function with smooth width 11 (time lags are adjusted by shifting the raw time by the lag).
 A PointProcess object is created, which will be used for the detection of the start of the glottal cycles.
 The calculated dEGG is smoothed again with the same moving average and time lag fix.
 The peaks in the dEGG signal are detected with `To point process (periodic, peaks)`.
@@ -386,4 +388,11 @@ The following is the header of the scripts.
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 ######################################
+#
+# !!! WARNING !!!
+#
+# This script is generated automatically, DO NOT EDIT
+#
+######################################
+```
 ```
